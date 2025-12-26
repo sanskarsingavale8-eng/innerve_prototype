@@ -1,0 +1,347 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 16px 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: rgba(10, 11, 20, 0.7);
+  backdrop-filter: blur(12px);
+}
+
+.navbar.scrolled {
+  background: rgba(10, 11, 20, 0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+  padding: 12px 0;
+}
+
+.scroll-progress-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradient-primary);
+  transform-origin: 0%;
+  z-index: 1001;
+  box-shadow: 0 0 20px rgba(6, 243, 255, 0.6);
+}
+
+.progress-glow {
+  position: absolute;
+  inset: -4px;
+  background: var(--gradient-primary);
+  filter: blur(6px); /* Reduced from 12px */
+}
+
+.navbar-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+  color: var(--text-primary);
+  font-weight: 700;
+  font-size: 22px;
+  z-index: 2;
+}
+
+.brand-logo-container {
+  width: 64px;
+  height: 64px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border-radius: 14px;
+}
+
+/* Remove hover scale effect */
+.brand-logo {
+  width: 60px !important;
+  height: 60px !important;
+  object-fit: contain !important;
+  position: relative;
+  z-index: 2;
+  display: block !important;
+  filter: 
+    drop-shadow(0 0 15px rgba(124, 58, 237, 0.8))
+    drop-shadow(0 0 25px rgba(6, 243, 255, 0.6));
+  mix-blend-mode: normal;
+  opacity: 1;
+}
+
+/* Remove these - delete the glow ring styles */
+.logo-glow-ring {
+  display: none;
+}
+
+.brand-logo-container::before {
+  display: none;
+}
+
+.brand-name {
+  font-size: 24px;
+  font-weight: 900;
+  letter-spacing: -0.5px;
+  display: flex;
+  gap: 2px;
+}
+
+.trust-text,
+.vault-text {
+  background: linear-gradient(135deg, #06F3FF, #7C3AED);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 0 30px rgba(6, 243, 255, 0.5);
+  font-weight: 900;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 10px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.nav-link::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.05);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+  border-radius: 10px;
+}
+
+.nav-link:hover::before {
+  transform: scaleX(1);
+}
+
+.nav-link:hover {
+  color: var(--text-primary);
+}
+
+.nav-link.active {
+  color: var(--primary);
+  background: rgba(6, 243, 255, 0.15);
+  box-shadow: 0 0 20px rgba(6, 243, 255, 0.2);
+}
+
+.nav-link.active::before {
+  display: none;
+}
+
+.active-underline {
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--gradient-primary);
+  border-radius: 2px;
+  box-shadow: 0 0 15px rgba(6, 243, 255, 0.8);
+}
+
+.nav-icon {
+  width: 18px;
+  height: 18px;
+}
+
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.user-badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.user-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg,#7C3AED,#06F3FF);
+  color: #fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:700;
+}
+.user-name { font-size: 14px; }
+.signout-btn {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.06);
+  color: var(--text-secondary);
+  padding: 6px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btn-connect-wallet {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 24px;
+  background: var(--gradient-primary);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(6, 243, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+.wallet-connected {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  background: rgba(16, 185, 129, 0.15);
+  border: 2px solid rgba(16, 185, 129, 0.3);
+  border-radius: 12px;
+  color: var(--success);
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Courier New', monospace;
+}
+
+.wallet-status-dot {
+  width: 10px;
+  height: 10px;
+  background: var(--success);
+  border-radius: 50%;
+  position: relative;
+}
+
+.mobile-menu-btn {
+  display: none;
+  width: 44px;
+  height: 44px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  color: var(--text-primary);
+  font-size: 24px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobile-menu-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  z-index: 998;
+}
+
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 320px;
+  background: rgba(13, 14, 31, 0.95);
+  backdrop-filter: blur(20px);
+  border-left: 1px solid rgba(6, 243, 255, 0.2);
+  z-index: 999;
+  box-shadow: -10px 0 50px rgba(6, 243, 255, 0.2);
+  padding: 80px 20px 20px;
+}
+
+.mobile-menu-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mobile-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  border-radius: 12px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  font-size: 16px;
+}
+
+.mobile-nav-link:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--primary);
+}
+
+.mobile-nav-link.active {
+  background: rgba(6, 243, 255, 0.15);
+  color: var(--primary);
+}
+
+.mobile-nav-link svg {
+  width: 22px;
+  height: 22px;
+}
+
+@media (max-width: 1024px) {
+  .navbar-links {
+    display: none;
+  }
+  
+  .mobile-menu-btn {
+    display: flex;
+  }
+}
+
+@media (max-width: 480px) {
+  .btn-connect-wallet span {
+    display: none;
+  }
+  
+  .brand-name {
+    font-size: 18px;
+  }
+}
